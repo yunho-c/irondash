@@ -92,16 +92,25 @@ static char associatedObjectKey;
 
 + (NSView *)getFlutterView:(int64_t)engineHandle {
   _IrondashEngineContext *context = [registry objectForKey:@(engineHandle)];
+  if (context == nil) {
+    return nil;
+  }
   return context->flutterView;
 }
 
 + (id<FlutterTextureRegistry>)getTextureRegistry:(int64_t)engineHandle {
   _IrondashEngineContext *context = [registry objectForKey:@(engineHandle)];
+  if (context == nil) {
+    return nil;
+  }
   return context->textureRegistry;
 }
 
 + (id<FlutterBinaryMessenger>)getBinaryMessenger:(int64_t)engineHandle {
   _IrondashEngineContext *context = [registry objectForKey:@(engineHandle)];
+  if (context == nil) {
+    return nil;
+  }
   return context->binaryMessenger;
 }
 
